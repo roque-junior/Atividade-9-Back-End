@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//  4. Crie um cadastro de pessoas onde o usuário informe o nome, idade
+// e se está trabalhando ou não, se a pessoa estiver trabalhando
+
+// pergunte para ele o salário que está ganhando. Para cada pessoa
+// cadastrada, pergunte ao usuário se ele deseja continuar
+// cadastrando ou não. No final, mostre as pessoas que estão
+// desempregadas, as pessoas que estão empregadas separadas
+// pelas que ganham mais que 2500 e menos que 2500.
+//  
+    
+      let cadastros = [];
+      let empregadas = [];
+      let desemp = [];
+      let teste = "";
+      let teste2 = "";
+
+      while (true) {
+        pessoa = {};
+        pessoa.emprego = false;
+        pessoa.nome = prompt("Qual o nome da pessoa?");
+        pessoa.idade = parseInt(prompt("Qual a idade? "));
+        teste = prompt("está trabalhando? (S/N)").toUpperCase();
+        if (teste == "S") {
+          pessoa.emprego = true;
+          pessoa.salario = parseFloat(prompt("qual o salário?"));
+        } else {
+          pessoa.emprego = false;
+        }
+        cadastros.push(pessoa);
+        teste2 = prompt("deseja continuar o cadastro? (S/N)").toUpperCase();
+        if (teste2 == "N") {
+          for (const pessoa of cadastros) {
+            if (pessoa.emprego == true) {
+              empregadas.push(pessoa);
+              if (pessoa.salario >= 2500) {
+                pessoa.desc = "salário alto";
+              } else {
+                pessoa.desc = "salario baixo";
+              }
+            } else {
+              desemp.push(pessoa);
+            }
+          }
+          break;
+        }
+      }
+
+      console.log("todos: ", cadastros);
+      console.log("empregadas: ", empregadas);
+      console.log("desempregadas: ", desemp);
+    
+    </script>
+</body>
+</html>
